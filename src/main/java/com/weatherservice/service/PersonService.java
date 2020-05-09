@@ -24,7 +24,7 @@ public class PersonService {
         return personRepository.findById(id).get();
     }
 
-    public void saveOrUpdate(Person person)
+    public void save(Person person)
     {
         personRepository.save(person);
     }
@@ -32,10 +32,5 @@ public class PersonService {
     public void delete(Long id)
     {
         personRepository.deleteById(id);
-    }
-
-    public void update(Person person, Long id)
-    {
-        personRepository.save(person);
     }
 }

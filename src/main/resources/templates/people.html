@@ -1,0 +1,23 @@
+<div th:switch="${people}">
+    <h2 th:case="null">No people yet!</h2>
+    <div th:case="*">
+        <h2>People</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person : ${people}">
+                <td th:text="${person.name}"></td>
+                <td th:text="${person.city}"></td>
+                <td><a th:href="@{/people/delete/{id}(id=${person.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/people/add">Add a new person</a></p>
+</div>
