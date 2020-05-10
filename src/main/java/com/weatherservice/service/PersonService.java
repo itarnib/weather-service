@@ -24,13 +24,15 @@ public class PersonService {
         return personRepository.findById(id).get();
     }
 
-    public void save(Person person)
+    public Person savePerson(Person person)
     {
         personRepository.save(person);
+        return person;
     }
 
-    public void delete(Long id)
+    public Long deletePerson(Long id)
     {
         personRepository.deleteById(id);
+        return id;
     }
 }

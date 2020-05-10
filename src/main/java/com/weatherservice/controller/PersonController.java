@@ -38,14 +38,14 @@ public class PersonController {
         if (result.hasErrors()) {
             return "add-person";
         }
-        personService.save(person);
+        personService.savePerson(person);
         model.addAttribute("people", personService.getAllPeople());
         return "people";
     }
 
     @RequestMapping(value = "people/delete/{id}", method = RequestMethod.GET)
     public String deletePerson(@PathVariable Long id, Model model) {
-        personService.delete(id);
+        personService.deletePerson(id);
         model.addAttribute("people", personService.getAllPeople());
         return "people";
     }
