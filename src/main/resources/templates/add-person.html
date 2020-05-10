@@ -5,13 +5,13 @@
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" th:field="*{name}" id="name" placeholder="Name">
-            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-        </div>
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </span>
         <div class="form-group">
             <label for="city">City</label>
             <input type="text" th:field="*{city}" id="city" placeholder="City">
-            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
         </div>
-        <input type="submit" class="btn btn-default" value="Add Person">
+        <input type="submit" class="btn btn-primary" value="Add Person">
     </form>
 </div>

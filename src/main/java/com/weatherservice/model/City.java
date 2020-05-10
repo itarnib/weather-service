@@ -1,8 +1,13 @@
 package com.weatherservice.model;
 
+import javax.validation.constraints.NotBlank;
+
 public class City {
     int id;
+
+    @NotBlank(message = "City is mandatory")
     String name;
+
     Weather main;
 
     public City() { }

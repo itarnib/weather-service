@@ -1,0 +1,32 @@
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <h2 th:text="${city.name}"></h2>
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>Temperature</td>
+            <td th:text="${city.main.temp}"></td>
+        </tr>
+        <tr>
+            <td>Feels like</td>
+            <td th:text="${city.main.feels_like}"></td>
+        </tr>
+        <tr>
+            <td>Min Temperature</td>
+            <td th:text="${city.main.temp_min}"></td>
+        </tr>
+        <tr>
+            <td>Max Temperature</td>
+            <td th:text="${city.main.temp_max}"></td>
+        </tr>
+        <tr>
+            <td>Pressure</td>
+            <td th:text="${city.main.pressure}"></td>
+        </tr>
+        <tr>
+            <td>Humidity</td>
+            <td th:text="${city.main.humidity}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
