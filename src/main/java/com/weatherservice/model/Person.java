@@ -1,6 +1,6 @@
 package com.weatherservice.model;
 
-import com.google.gson.Gson;
+import com.weatherservice.service.WeatherService;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,13 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import java.io.BufferedReader;
+import javax.validation.constraints.Pattern;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 @Entity
 @Table(name="person")
@@ -23,11 +19,11 @@ public class Person {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "Name is mandatory")
+    @Pattern(regexp="[a-zA-Z]+", message = "Name cannot be blank and can contain only letters")
     @Column(name="name")
     private String name;
 
-    @NotBlank(message = "City is mandatory")
+    @Pattern(regexp="[a-zA-Z]+", message = "City cannot be blank and can contain only letters")
     @Column(name="city")
     private String city;
 
@@ -63,17 +59,13 @@ public class Person {
         this.city = city;
     }
 
-    public double tempInCity() throws IOException {
-        String apiKey = "df04ad59a46e9e3ffb04df4178548f9c";
-        URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + apiKey);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.connect();
+    public String tempInCity() throws IOException {
+        City result = new WeatherService().getCityWeather(city);
 
-        BufferedReader json  = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        if(result.getMain() != null) {
+            return String.valueOf(result.getMain().temp);
+        }
 
-        City result = new Gson().fromJson(json, City.class);
-
-        return result.getMain().temp;
+        return "Not Found";
     }
 }

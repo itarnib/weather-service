@@ -1,11 +1,12 @@
 package com.weatherservice.model;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 public class City {
     int id;
 
-    @NotBlank(message = "City is mandatory")
+    @Pattern(regexp="[a-zA-Z]+", message = "City cannot be blank and can contain only letters")
     String name;
 
     Weather main;
