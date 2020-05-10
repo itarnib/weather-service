@@ -1,9 +1,17 @@
-<form action="#" th:action="@{/people/add}" th:object="${person}" method="post">
-    <label for="name">Name</label>
-    <input type="text" th:field="*{name}" id="name" placeholder="Name">
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-    <label for="city">City</label>
-    <input type="text" th:field="*{city}" id="city" placeholder="City">
-    <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
-    <input type="submit" value="Add Person">
-</form>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <form action="#" th:action="@{/people/add}" th:object="${person}" method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" th:field="*{name}" id="name" placeholder="Name">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" th:field="*{city}" id="city" placeholder="City">
+            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+        </div>
+        <input type="submit" class="btn btn-default" value="Add Person">
+    </form>
+</div>

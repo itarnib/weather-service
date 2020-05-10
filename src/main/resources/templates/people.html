@@ -1,23 +1,26 @@
-<div th:switch="${people}">
-    <h2 th:case="null">No people yet!</h2>
-    <div th:case="*">
-        <h2>People</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>City</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="person : ${people}">
-                <td th:text="${person.name}"></td>
-                <td th:text="${person.city}"></td>
-                <td><a th:href="@{/people/delete/{id}(id=${person.id})}">Delete</a></td>
-            </tr>
-            </tbody>
-        </table>
+<div th:replace="fragments/header :: header"></div>
+    <div class="container" th:switch="${people}">
+        <h2 th:case="null">No people yet!</h2>
+        <div th:case="*">
+            <h2>People</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Temperature in the City</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="person : ${people}">
+                    <td th:text="${person.name}"></td>
+                    <td th:text="${person.city}"></td>
+                    <td th:text="${person.tempInCity()}"></td>
+                    <td><a th:href="@{/people/delete/{id}(id=${person.id})}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <a class="btn btn-primary btn-lg active" href="/people/add">Add a new person</a>
     </div>
-    <p><a href="/people/add">Add a new person</a></p>
-</div>
