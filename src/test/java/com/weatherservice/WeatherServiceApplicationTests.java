@@ -10,4 +10,9 @@ class WeatherServiceApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	public void main() {
+		WeatherServiceApplication.main(new String[] {});
+	}
+
 }

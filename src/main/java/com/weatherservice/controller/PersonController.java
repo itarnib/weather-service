@@ -33,7 +33,7 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/people/add", method = RequestMethod.POST)
-    private String savePerson(@Valid Person person, BindingResult result, Model model)
+    public String savePerson(@Valid Person person, BindingResult result, Model model)
     {
         if (result.hasErrors()) {
             return "add-person";
