@@ -16,7 +16,7 @@ public class ScheduledTasks {
 
     @Scheduled(cron="${cron.expression}")
     @CacheEvict(value = "riga", allEntries = true)
-    private void updateCache() throws IOException {
+    public void updateCache() throws IOException {
         logger.info("Updating cache");
         new WeatherService().getRigaWeather();
     }

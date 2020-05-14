@@ -1,7 +1,7 @@
 <div th:replace="fragments/header :: header"></div>
-    <div class="container" th:switch="${people}">
-        <h2 th:case="null">No people yet!</h2>
-        <div th:case="*">
+    <div class="container">
+        <h2 th:if="${people.empty}">No people yet!</h2>
+        <div th:if="${!people.empty}">
             <h2>People</h2>
             <table class="table">
                 <thead>

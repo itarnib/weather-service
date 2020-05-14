@@ -66,4 +66,11 @@ public class WeatherControllerTests {
         assertEquals("weather", returned);
     }
 
+    @Test
+    public void testGetRigaWeather() throws IOException {
+        when(weatherService.getRigaWeather()).thenReturn(null);
+        String returned = weatherController.getRigaWeather(model);
+        assertEquals("weather-result", returned);
+    }
+
 }

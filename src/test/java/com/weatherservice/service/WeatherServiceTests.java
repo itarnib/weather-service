@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class WeatherServiceTest {
+public class WeatherServiceTests {
     @Autowired
     private WeatherService weatherService;
 
@@ -32,5 +32,15 @@ public class WeatherServiceTest {
         assertNull(ttt.getName());
         assertEquals(ttt.getId(), 0L);
         assertNull(ttt.getMain());
+    }
+
+    @Test
+    public void testGetRigaWeather() throws IOException {
+
+        City riga = weatherService.getRigaWeather();
+
+        assertEquals(riga.getName(), "Rīga");
+        assertNotNull(riga.getId());
+        assertNotNull(riga.getMain());
     }
 }
