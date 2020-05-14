@@ -2,6 +2,7 @@ package com.weatherservice.service;
 
 import com.google.gson.Gson;
 import com.weatherservice.model.City;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -12,6 +13,7 @@ import java.net.URL;
 
 @Service
 public class WeatherService {
+    @Cacheable("weather")
     public City getCityWeather(String city) throws IOException {
         String apiKey = "df04ad59a46e9e3ffb04df4178548f9c";
         URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + apiKey);
