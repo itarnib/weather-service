@@ -46,4 +46,14 @@ public class WeatherController {
         }
         return "redirect:/weather/" + city.getName();
     }
+
+    @RequestMapping(value = "riga", method = RequestMethod.GET)
+    public String getRigaWeather (Model model) throws IOException {
+        logger.info("Searching weather for Riga");
+
+        City result = weatherService.getRigaWeather();
+        model.addAttribute("city", result);
+
+        return "weather-result";
+    }
 }
