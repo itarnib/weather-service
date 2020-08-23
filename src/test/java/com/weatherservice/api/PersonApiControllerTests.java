@@ -1,6 +1,7 @@
 package com.weatherservice.api;
 
 import com.weatherservice.model.Person;
+import com.weatherservice.model.PersonDTO;
 import com.weatherservice.service.PersonService;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,10 +43,11 @@ public class PersonApiControllerTests {
 
     @Test
     public void testSavePerson() {
+        PersonDTO personDTO = new PersonDTO(1L, "John", "Washington");
         Person person = new Person(1L, "John", "Washington");
-        when(personService.savePerson(person)).thenReturn(person);
-        Person returned = personApiController.savePerson(person);
-        assertEquals(person, returned);
+        when(personService.savePerson(person)).thenReturn(null);
+        Person returned = personApiController.savePerson(personDTO);
+        assertEquals(null, returned);
     }
 
     @Test

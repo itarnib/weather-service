@@ -10,6 +10,8 @@ import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
 import org.junit.Test;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 public class CityTests {
     @Test
     public void testGetterSetter() {
@@ -27,5 +29,6 @@ public class CityTests {
     @Test
     public void testConstructor() {
         City city = new City(1, "Riga", new Weather());
+        assertNotNull(city);
     }
 }

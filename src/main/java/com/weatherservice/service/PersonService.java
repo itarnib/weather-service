@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonService {
@@ -14,14 +15,18 @@ public class PersonService {
     PersonRepository personRepository;
 
     public List<Person> getAllPeople() {
-        List<Person> people = new ArrayList<Person>();
-        personRepository.findAll().forEach(person -> people.add(person));  ;
+        List<Person> people = new ArrayList<>();
+        personRepository.findAll().forEach(people::add);
         return people;
     }
 
     public Person getPersonById(Long id)
     {
-        return personRepository.findById(id).get();
+        Optional<Person> person = personRepository.findById(id);
+        if(person.isPresent()) {
+            return person.get();
+        }
+        return null;
     }
 
     public Person savePerson(Person person)

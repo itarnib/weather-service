@@ -1,6 +1,5 @@
 package com.weatherservice.model;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 public class City {

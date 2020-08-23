@@ -15,7 +15,7 @@ import java.net.URL;
 
 @Service
 public class WeatherService {
-    private final static Logger logger = LoggerFactory.getLogger(WeatherService.class);
+    private static final Logger logger = LoggerFactory.getLogger(WeatherService.class);
 
     String apiKey = "df04ad59a46e9e3ffb04df4178548f9c";
 

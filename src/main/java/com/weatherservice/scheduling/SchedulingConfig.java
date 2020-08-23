@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Configuration
 @EnableScheduling
 @ComponentScan("com.weatherservice.scheduling")
-public class SchedulingConfig {
+public class SchedulingConfig {                                                                                           //NOSONAR
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {

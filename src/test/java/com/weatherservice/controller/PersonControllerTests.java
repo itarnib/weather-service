@@ -1,6 +1,7 @@
 package com.weatherservice.controller;
 
 import com.weatherservice.model.Person;
+import com.weatherservice.model.PersonDTO;
 import com.weatherservice.service.PersonService;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,26 +50,28 @@ public class PersonControllerTests {
 
     @Test
     public void testAddPerson() {
-        Person person = new Person(1L, "John", "Washington");
-        String returned = personController.addPerson(person);
+        PersonDTO personDTO = new PersonDTO(1L, "John", "Washington");
+        String returned = personController.addPerson(personDTO);
         assertEquals("add-person", returned);
     }
 
     @Test
     public void testSavePersonWithoutErrors() {
+        PersonDTO personDTO = new PersonDTO(1L, "John", "Washington");
         Person person = new Person(1L, "John", "Washington");
         when(personService.savePerson(person)).thenReturn(person);
         when(result.hasErrors()).thenReturn(false);
-        String returned = personController.savePerson(person, result, model);
+        String returned = personController.savePerson(personDTO, result, model);
         assertEquals("people", returned);
     }
 
     @Test
     public void testSavePersonWithErrors() {
+        PersonDTO personDTO = new PersonDTO(1L, "John", "Washington");
         Person person = new Person(1L, "John", "Washington");
         when(personService.savePerson(person)).thenReturn(person);
         when(result.hasErrors()).thenReturn(true);
-        String returned = personController.savePerson(person, result, model);
+        String returned = personController.savePerson(personDTO, result, model);
         assertEquals("add-person", returned);
     }
 

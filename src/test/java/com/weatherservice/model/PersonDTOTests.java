@@ -10,12 +10,10 @@ import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-public class WeatherTests {
+public class PersonDTOTests {
     @Test
     public void testGetterSetter() {
-        PojoClass pojoclass = PojoClassFactory.getPojoClass(Weather.class);
+        PojoClass pojoclass = PojoClassFactory.getPojoClass(PersonDTO.class);
         Validator validator = ValidatorBuilder
                 .create()
                 .with(new SetterMustExistRule())
@@ -24,11 +22,5 @@ public class WeatherTests {
                 .with(new GetterTester())
                 .build();
         validator.validate(pojoclass);
-    }
-
-    @Test
-    public void testConstructor() {
-        Weather weather = new Weather(10.5, 10, 9, 15, 50, 20);
-        assertNotNull(weather);
     }
 }

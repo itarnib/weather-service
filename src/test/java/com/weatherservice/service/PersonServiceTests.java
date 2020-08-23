@@ -2,6 +2,7 @@ package com.weatherservice.service;
 
 import com.weatherservice.model.Person;
 
+import com.weatherservice.scheduling.SchedulingConfig;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,22 +46,22 @@ public class PersonServiceTests {
         Person person1 = personService.getPersonById(1L);
         Person person2 = personService.getPersonById(2L);
 
-        assertEquals(person1.getName(), "John");
-        assertEquals(person1.getCity(), "Washington");
+        assertEquals("John", person1.getName());
+        assertEquals("Washington", person1.getCity());
 
-        assertEquals(person2.getName(), "Kate");
-        assertEquals(person2.getCity(), "Riga");
+        assertEquals("Kate", person2.getName());
+        assertEquals("Riga", person2.getCity());
     }
 
     @Test
     public void test3DeletePerson() {
         Long id = personService.deletePerson(1L);
-        assertEquals(id, 1L);
+        assertEquals(1L, id);
     }
 
     @Test
     public void test4GetAllPeople() {
         List<Person> people = personService.getAllPeople();
-        assertEquals(people.size(), 1);
+        assertEquals(1, people.size());
     }
 }

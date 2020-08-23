@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -21,11 +21,12 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherService;
 
-    private final static Logger logger = LoggerFactory.getLogger(WeatherController.class);
+    private static final Logger logger = LoggerFactory.getLogger(WeatherController.class);
 
-    @RequestMapping(value = "weather/{city}", method = RequestMethod.GET)
+    @GetMapping(value = "weather/{city}")
     public String getWeather (@PathVariable String city, Model model) throws IOException {
-        logger.info("Searching weather for: " + city);
+        String message = "Searching weather for: " + city;
+        logger.info(message);
 
         City result = weatherService.getCityWeather(city);
         model.addAttribute("city", result);
@@ -33,12 +34,12 @@ public class WeatherController {
         return "weather-result";
     }
 
-    @RequestMapping(value = "weather", method = RequestMethod.GET)
+    @GetMapping(value = "weather")
     public String weather (City city) {
         return "weather";
     }
 
-    @RequestMapping(value = "weather", method = RequestMethod.POST)
+    @PostMapping(value = "weather")
     public String checkWeather (@Valid City city, BindingResult result, Model model) {
         if (result.hasErrors()) {
             logger.error("Wrong input");
@@ -47,7 +48,7 @@ public class WeatherController {
         return "redirect:/weather/" + city.getName();
     }
 
-    @RequestMapping(value = "riga", method = RequestMethod.GET)
+    @GetMapping(value = "riga")
     public String getRigaWeather (Model model) throws IOException {
         logger.info("Searching weather for Riga");
 

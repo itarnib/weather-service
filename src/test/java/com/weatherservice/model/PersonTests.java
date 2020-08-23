@@ -37,6 +37,6 @@ public class PersonTests {
         assertThat(person1.tempInCity(), not(equalTo("Not Found")));
 
         Person person2 = new Person(2L, "John", "ttt");
-        assertEquals(person2.tempInCity(), "Not Found");
+        assertEquals("Not Found", person2.tempInCity());
     }
 }

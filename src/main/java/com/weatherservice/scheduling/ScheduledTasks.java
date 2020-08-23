@@ -13,7 +13,7 @@ import java.io.IOException;
 @Component("scheduledTasks")
 public class ScheduledTasks {
 
-    private final static Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
+    private static final Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
 
     @Autowired
     WeatherService weatherService;

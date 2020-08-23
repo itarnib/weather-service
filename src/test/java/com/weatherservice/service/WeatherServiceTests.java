@@ -9,9 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,12 +23,12 @@ public class WeatherServiceTests {
         City london = weatherService.getCityWeather("London");
         City ttt = weatherService.getCityWeather("ttt");
 
-        assertEquals(london.getName(), "London");
-        assertNotNull(london.getId());
+        assertEquals("London", london.getName());
+        assertNotEquals(0L, london.getId());
         assertNotNull(london.getMain());
 
         assertNull(ttt.getName());
-        assertEquals(ttt.getId(), 0L);
+        assertEquals(0L, ttt.getId());
         assertNull(ttt.getMain());
     }
 
@@ -39,8 +37,8 @@ public class WeatherServiceTests {
 
         City riga = weatherService.getRigaWeather();
 
-        assertEquals(riga.getName(), "Rīga");
-        assertNotNull(riga.getId());
+        assertNotNull(riga.getName());
+        assertNotEquals(0L, riga.getId());
         assertNotNull(riga.getMain());
     }
 }

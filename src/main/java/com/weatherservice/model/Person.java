@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 
 import java.io.IOException;
 
@@ -19,11 +18,9 @@ public class Person {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @Pattern(regexp="[a-zA-Z]+", message = "Name cannot be blank and can contain only letters")
     @Column(name="name")
     private String name;
 
-    @Pattern(regexp="[a-zA-Z]+", message = "City cannot be blank and can contain only letters")
     @Column(name="city")
     private String city;
 
